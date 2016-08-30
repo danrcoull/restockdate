@@ -1,0 +1,14 @@
+{
+    "name": "Gremlintech/Restockdate",
+    "license": "OSL-3.0",
+    "type": "magento-module",
+    "require": {
+        "magento-hackathon/magento-composer-installer": "*"
+    },
+    "authors":[
+        {
+            "name":"Daniel Coull",
+            "email":"ttechitsolutions@gmail.com"
+        }
+    ]
+}

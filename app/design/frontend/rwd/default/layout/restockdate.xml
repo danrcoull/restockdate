@@ -1,0 +1,26 @@
+<?xml version="1.0"?>   
+<layout version="1.0.0">   
+
+  <checkout_cart_index translate="label" module="restockdate">
+      <reference name="checkout.cart">
+        <action method="addItemRender"><type>simple</type><block>checkout/cart_item_renderer</block><template>restockdate/checkout/cart/item/default.phtml</template></action>
+      </reference>
+  </checkout_cart_index>
+
+  <PRODUCT_TYPE_simple translate="label" module="restockdate">
+    <reference name="product.info">
+      <remove name="product_type_availability" />
+      <block type="restockdate/catalog_product_view_type_simple" name="product.info.availability" as="product_type_availability" template="restockdate/catalog/product/view/type/availability/default.phtml" />
+    </reference>
+  </PRODUCT_TYPE_simple>
+
+  <checkout_onepage_backorder>
+    <reference name="root">
+      <action method="setTemplate"><template>page/1column.phtml</template></action>
+    </reference>
+    <reference name="content">
+      <block type="restockdate/checkout_onepage_backorder" name="onepage_backorder" template="restockdate/checkout/onepage/backorder.phtml"/>
+    </reference>
+  </checkout_onepage_backorder>
+</layout>   
+	

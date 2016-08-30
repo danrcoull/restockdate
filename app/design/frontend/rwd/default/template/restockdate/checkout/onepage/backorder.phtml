@@ -1,0 +1,60 @@
+<div class="content">
+    <div class="page-title">
+        <h2>Confirm Your Backorder Products</h2>
+
+        <p>Check All the boxex below and confirm.</p>
+    </div>
+
+    <div class="table-wrapper">
+        <form method="post" name="backorder-confirm"
+              action="<?php echo Mage::getUrl('checkout/onepage/confirmbackorder'); ?>">
+            <input type="hidden" name="form_key"
+                   value="<?php echo Mage::getSingleton('core/session')->getFormKey(); ?>"/>
+
+            <div class="row" style="display:block; width:100%; cleaR:both; margin-top:10px; margin-bottom:10px;">
+                <?php
+
+                foreach ($this->getBackorderCollection() as $item) :
+                    $_product = $item->getProduct()->load();
+                    ?>
+                    <div class="product">
+                        <div class="image" style="float:left; width:20%; display:block">
+                            <img style="float:left; width:100%;"
+                                 src="<?php echo $this->helper('catalog/image')->init($_product, 'image') ?>"
+                                 alt="<?php echo $_product->getName(); ?>" title="<?php echo $_product->getName(); ?>"/>
+                        </div>
+                        <div class="details" style="float:left; width:60%; margin-left:10px;">
+                            <h3><?php echo $_product->getName(); ?></h3>
+
+                            <?php if ($_product->isInStock()): ?>
+                                <p class="availability in-stock">
+                                    <span
+                                        class="label"><?php echo $this->helper('catalog')->__('Availability:') ?></span>
+                                    <span class="value"><?php echo $this->helper('catalog')->__('In stock') ?></span>
+                                </p>
+                            <?php else: ?>
+                                <p class="availability out-of-stock">
+                                    <span
+                                        class="label"><?php echo $this->helper('catalog')->__('Availability:') ?></span>
+                                    <span
+                                        class="value"><?php echo $this->helper('catalog')->__('Out of stock') ?></span>
+                                </p>
+                            <?php endif; ?>
+
+                            <?php
+
+                            if ($date = $_product->getRestockDate()) : ?>
+                                <p><?php echo Mage::helper('restockdate')->__('Product back in stock on:') . $date; ?></p>
+                            <?php endif; ?>
+
+                        </div>
+
+                    </div>
+                <?php endforeach; ?>
+
+            </div>
+
+            <input type="submit" style="display:block;  cleaR:both;" class="button" name="submit" value="Confirm"/>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<config>
+    <acl>
+        <resources>
+            <admin>
+                <children>
+                    <system>
+                        <children>
+                            <config>
+                                <children>
+                                    <restockdate translate="title" module="restockdate">
+                                        <title>Restock Date Section</title>
+                                        <sort_order>100</sort_order>
+                                    </restockdate>
+                                </children>
+                            </config>
+                        </children>
+                    </system>
+                </children>
+            </admin>
+        </resources>
+    </acl>
+</config>
